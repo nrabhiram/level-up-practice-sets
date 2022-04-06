@@ -26,3 +26,13 @@
 #           ? Do we assume that all of the cells are dead/alive? 
 #           ? Or do we use use a random function to determine the initial state of each cell? 
 #           ? Does this even matter in the first place?
+
+# Get number of rows required for the game from user
+rows = int(input("Enter the number of rows for the game: "))
+# Get number of columns required for the game from user
+columns = int(input("Enter the number of columns for the game: "))
+
+# Figuring out function syntax
+def generate:
+    print(rows, columns)
+    print(type(rows), type(columns))
