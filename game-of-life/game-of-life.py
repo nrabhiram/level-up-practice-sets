@@ -36,8 +36,11 @@ columns = int(input("Enter the number of columns for the game: "))
 cells = []
 
 # Figuring out function syntax
-def generate():
+def generate_cells_data():
     # for every id number b/w 0 to l * h - 1, add a new dictionary to the list
-    cell_data = {}
+    for n in range(0, rows * columns):
+        # This is giving me an error, need to figure out syntax
+        cells.append({id: n, status: "alive"})
+    print(cells)
 
-generate()
+generate_cells_data()
