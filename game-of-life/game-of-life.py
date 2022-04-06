@@ -41,7 +41,6 @@ def generate_cells_data():
     for n in range(0, rows * columns):
         # This is giving me an error, need to figure out syntax
         cells.append({"id": n, "status": "alive"})
-    print(cells)
 
 # Evaluate status of cell by checking the neighbouring cells' status
 def find_neighbours(id):
@@ -50,6 +49,7 @@ def find_neighbours(id):
     # Top neighbour
     if ((id - columns) >= 0 and (id - columns) <= (rows * columns - 1)):
         neighbours.append(id - columns)
+        print("top")
     # Bottom neighbour
     if ((id + columns) >= 0 and (id + columns) <= (rows * columns - 1)):
         neighbours.append(id + columns)
@@ -84,11 +84,16 @@ def eval_status(id):
             num_alive += 1
         elif (cells[neighbour]["status"] == "dead"):
             num_dead += 1
-    if (cell_present_status)
+    if (cell_present_status == "alive" and (num_alive == 2 or num_alive == 3)) :
+        print("remain alive")
+    elif (cell_present_status == "dead" and num_alive == 3):
+        print("revive")
+    else:
+        print(neighbours)
 
 
 
 
 generate_cells_data()
-find_neighbours(5)
-eval_status(5)
+find_neighbours(2)
+eval_status(2)
