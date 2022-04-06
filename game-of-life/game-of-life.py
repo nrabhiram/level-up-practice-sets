@@ -40,7 +40,14 @@ def generate_cells_data():
     # for every id number b/w 0 to l * h - 1, add a new dictionary to the list
     for n in range(0, rows * columns):
         # This is giving me an error, need to figure out syntax
-        cells.append({id: n, status: "alive"})
+        cells.append({"id": n, "status": "alive"})
     print(cells)
+
+# Evaluate status of cell by checking the neighbouring cells' status
+def eval_status(id):
+    # Firstly, create a list of all the neighbours
+    neighbours = []
+    # Top neighbour
+    if (id - columns <= (rows * columns - 1))
 
 generate_cells_data()
