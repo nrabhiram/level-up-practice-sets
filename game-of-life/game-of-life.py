@@ -54,7 +54,24 @@ def eval_status(id):
     if ((id + columns) >= 0 and (id + columns) <= (rows * columns - 1)):
         neighbours.append(id + columns)
     # Left neighbour
+    if ((id - 1) >= 0 and (id - 1) <= (rows * columns - 1)):
+        neighbours.append(id - 1)
+    # Right neighbour
+    if ((id + 1) >= 0 and (id + 1) <= (rows * columns - 1)):
+        neighbours.append(id + 1)
+    # Top-right neighbour
+    if ((id - (columns - 1)) >= 0 and (id - (columns - 1)) <= (rows * columns - 1)):
+        neighbours.append(id - (columns - 1))
+    # Top-left neighbour
+    if ((id - (columns + 1)) >= 0 and (id - (columns + 1)) <= (rows * columns - 1)):
+        neighbours.append(id - (columns + 1))
+    # Bottom-right neighbour
+    if ((id + (columns + 1)) >= 0 and (id + (columns + 1)) <= (rows * columns - 1)):
+        neighbours.append(id + (columns + 1))
+    # Bottom-left neighbour
+    if ((id + (columns - 1)) >= 0 and (id + (columns - 1)) <= (rows * columns - 1)):
+        neighbours.append(id + (columns - 1))
     print(neighbours)
 
 generate_cells_data()
-eval_status(4)
+eval_status(5)
