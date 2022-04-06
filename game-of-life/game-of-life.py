@@ -31,8 +31,13 @@
 rows = int(input("Enter the number of rows for the game: "))
 # Get number of columns required for the game from user
 columns = int(input("Enter the number of columns for the game: "))
+# Create a list of dictionaries that looks like this:
+# [{id: 0, status: 'dead'}, ...]
+cells = []
 
 # Figuring out function syntax
-def generate:
-    print(rows, columns)
-    print(type(rows), type(columns))
+def generate():
+    # for every id number b/w 0 to l * h - 1, add a new dictionary to the list
+    cell_data = {}
+
+generate()
