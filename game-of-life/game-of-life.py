@@ -10,6 +10,8 @@
 #       - Number of columns
 #       - Method to set the initial configuration of the cells and the configuration after every iteration
 #           * In this method, we have to locate the 8 neighbours surrounding a specific cell
+#           ? How to locate? This is a 2D grid, so there'll be an X coordinate, and a Y coordinate. We could assume that the first cell is located at (0, 0).
+#           ! There must be a formula to find the 8 neighbours that applies for every integer ranging from 1...n; where n = rows * columns, i.e. the final cell
 #           * Once located, we have to determine whether the cell should be dead or alive in the next iteration
 #           ? How do we configure the initial state, when the game first starts. 
 #           ? Do we assume that all of the cells are dead/alive? 
