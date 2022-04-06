@@ -71,19 +71,22 @@ def find_neighbours(id):
     # Bottom-left neighbour
     if ((id + (columns - 1)) >= 0 and (id + (columns - 1)) <= (rows * columns - 1)):
         neighbours.append(id + (columns - 1))
-    print(neighbours)
+    return neighbours
 
 def eval_status(id):
     neighbours = find_neighbours(id)
     num_dead = 0
     num_alive = 0
+    cell_present_status = cells[id]["status"]
     # Find number of neighbours that are alive and dead
     for neighbour in neighbours:
         if (cells[neighbour]["status"] == "alive"):
-            num_alive++
+            num_alive += 1
         elif (cells[neighbour]["status"] == "dead"):
-            num_dead++
-    print(num_alive)
+            num_dead += 1
+    if (cell_present_status)
+
+
 
 
 generate_cells_data()
