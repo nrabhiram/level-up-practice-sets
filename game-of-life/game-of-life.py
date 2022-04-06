@@ -48,6 +48,13 @@ def eval_status(id):
     # Firstly, create a list of all the neighbours
     neighbours = []
     # Top neighbour
-    if (id - columns <= (rows * columns - 1))
+    if ((id - columns) >= 0 and (id - columns) <= (rows * columns - 1)):
+        neighbours.append(id - columns)
+    # Bottom neighbour
+    if ((id + columns) >= 0 and (id + columns) <= (rows * columns - 1)):
+        neighbours.append(id + columns)
+    # Left neighbour
+    print(neighbours)
 
 generate_cells_data()
+eval_status(4)
