@@ -44,7 +44,7 @@ def generate_cells_data():
     print(cells)
 
 # Evaluate status of cell by checking the neighbouring cells' status
-def eval_status(id):
+def find_neighbours(id):
     # Firstly, create a list of all the neighbours
     neighbours = []
     # Top neighbour
@@ -73,5 +73,19 @@ def eval_status(id):
         neighbours.append(id + (columns - 1))
     print(neighbours)
 
+def eval_status(id):
+    neighbours = find_neighbours(id)
+    num_dead = 0
+    num_alive = 0
+    # Find number of neighbours that are alive and dead
+    for neighbour in neighbours:
+        if (cells[neighbour]["status"] == "alive"):
+            num_alive++
+        elif (cells[neighbour]["status"] == "dead"):
+            num_dead++
+    print(num_alive)
+
+
 generate_cells_data()
+find_neighbours(5)
 eval_status(5)
