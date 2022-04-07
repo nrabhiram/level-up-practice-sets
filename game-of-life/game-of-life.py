@@ -56,6 +56,19 @@ def find_neighbours(id):
     # So, range is from -1 to +1 rows/columns away from the cell
     # We can check if the row and column exist in the first place
     # If they do, we add it to the list of neighbours
+    cell = neighbours[id]
+    cell_row = cell['row']
+    cell_col = cell['column']
+    for n in range(-1, 2):
+        for m in range(-1, 2)
+            neighbour_row = cell_row + n
+            neighbour_col = cell_col + m
+            # check if neighbour's column and row is a part of the grid
+            if ((neighbour_row >= 0 and neighbour_row <= rows - 1) and (neighbour_col >= 0 and neighbour_col <= columns - 1)):
+                neighbour_id = neighbour_row * columns + neighbour_col
+                neighbour_data = cells[neighbour_id]
+                neighbours.append(neighbour_data)
+    print(neighbours)
 
     # Top neighbour
     # if ((id - columns) >= 0 and (id - columns) <= (rows * columns - 1)):
