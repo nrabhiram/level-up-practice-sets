@@ -110,11 +110,23 @@ def perform_iteration():
         new_cell = cell
         new_cell["status"] = cell_new_status
         cells_copy.append(new_cell)
-    print(cells_copy)
+    return cells_copy
+
+def render_state():
+    for n in range(0, rows):
+        for m in range(0, columns):
+            id = n * columns + m
+            if (cells[id]["status"] == "alive"):
+                print("A", end=" ")
+            else:
+                print("D", end=" ")
+        print('')
+            
 
 
 
 
 
 generate_cells_data()
-perform_iteration()
+cells = perform_iteration()
+render_game()
