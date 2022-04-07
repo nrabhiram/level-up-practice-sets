@@ -44,7 +44,6 @@ def generate_cells_data():
             # Figure out a way to initialize config, most likely random function
             cell_data['status'] = 'alive'
             cells.append(cell_data)
-    print(cells)
 
 
 # Evaluate status of cell by checking the neighbouring cells' status; conditions aren't enough. Edge case: neighbour is within range but isn't existent, i.e. id exists but neighbour doesn't
@@ -79,20 +78,20 @@ def eval_status(id):
     cell_present_status = cells[id]["status"]
     # Find number of neighbours that are alive and dead
     for neighbour in neighbours:
-        if (cells[neighbour]["status"] == "alive"):
+        if (neighbour["status"] == "alive"):
             num_alive += 1
-        elif (cells[neighbour]["status"] == "dead"):
+        elif (neighbour["status"] == "dead"):
             num_dead += 1
     if (cell_present_status == "alive" and (num_alive == 2 or num_alive == 3)) :
         print("remain alive")
     elif (cell_present_status == "dead" and num_alive == 3):
         print("revive")
     else:
-        print(neighbours)
+        print("gg")
 
 
 
 
 generate_cells_data()
 find_neighbours(4)
-# eval_status(2)
+eval_status(4)
