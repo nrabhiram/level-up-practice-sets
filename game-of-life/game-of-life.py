@@ -25,7 +25,9 @@
 #           ? How do we configure the initial state, when the game first starts. 
 #           ? Do we assume that all of the cells are dead/alive? 
 #           ? Or do we use use a random function to determine the initial state of each cell? 
-#           ? Does this even matter in the first place?
+#           ! I'm going with a random function
+#           ? Does this even matter in the first place? 
+#           ! It doesn't matter
 
 # imports random module
 import random
@@ -45,11 +47,13 @@ def generate_cells_data():
         for m in range(0, columns):
             cell_data = {'id': (n * columns + m), 'row': n, 'column': m, 'status': 'alive'}
             # Figure out a way to initialize config, most likely random function
-            chance = random.randint(1, 4)
-            print(chance)
+            chance = random.randint(1, 2)
             if (chance == 1):
                 cell_data['status'] = 'alive'
+            else:
+                cell_data['status'] = 'dead'
             cells.append(cell_data)
+    print(cells)
 
 
 # Evaluate status of cell by checking the neighbouring cells' status; conditions aren't enough. Edge case: neighbour is within range but isn't existent, i.e. id exists but neighbour doesn't
