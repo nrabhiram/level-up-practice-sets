@@ -56,56 +56,24 @@ def find_neighbours(id):
     # So, range is from -1 to +1 rows/columns away from the cell
     # We can check if the row and column exist in the first place
     # If they do, we add it to the list of neighbours
-    cell = neighbours[id]
+    cell = cells[id]
     cell_row = cell['row']
     cell_col = cell['column']
     for n in range(-1, 2):
-        for m in range(-1, 2)
+        for m in range(-1, 2):
             neighbour_row = cell_row + n
             neighbour_col = cell_col + m
             # check if neighbour's column and row is a part of the grid
             if ((neighbour_row >= 0 and neighbour_row <= rows - 1) and (neighbour_col >= 0 and neighbour_col <= columns - 1)):
                 neighbour_id = neighbour_row * columns + neighbour_col
-                neighbour_data = cells[neighbour_id]
-                neighbours.append(neighbour_data)
-    print(neighbours)
-
-    # Top neighbour
-    # if ((id - columns) >= 0 and (id - columns) <= (rows * columns - 1)):
-    #     neighbours.append(id - columns)
-    #     print("top")
-    # # Bottom neighbour
-    # if ((id + columns) >= 0 and (id + columns) <= (rows * columns - 1)):
-    #     neighbours.append(id + columns)
-    #     print("bottom")
-    # # Left neighbour
-    # if ((id - 1) >= 0 and (id - 1) <= (rows * columns - 1)):
-    #     neighbours.append(id - 1)
-    #     print("left")
-    # # Right neighbour
-    # if ((id + 1) >= 0 and (id + 1) <= (rows * columns - 1)):
-    #     neighbours.append(id + 1)
-    #     print("right")
-    # # Top-right neighbour
-    # if ((id - (columns - 1)) >= 0 and (id - (columns - 1)) <= (rows * columns - 1)):
-    #     neighbours.append(id - (columns - 1))
-    #     print("tr")
-    # # Top-left neighbour
-    # if ((id - (columns + 1)) >= 0 and (id - (columns + 1)) <= (rows * columns - 1)):
-    #     neighbours.append(id - (columns + 1))
-    #     print("tl")
-    # # Bottom-right neighbour
-    # if ((id + (columns + 1)) >= 0 and (id + (columns + 1)) <= (rows * columns - 1)):
-    #     neighbours.append(id + (columns + 1))
-    #     print("br")
-    # # Bottom-left neighbour
-    # if ((id + (columns - 1)) >= 0 and (id + (columns - 1)) <= (rows * columns - 1)):
-    #     neighbours.append(id + (columns - 1))
-    #     print("bl")
-    # return neighbours
+                # check that the neighbour_id we're evaluating isn't the cell's id, i.e. cell is not a neighbour of itself
+                if (neighbour_id != id):
+                    neighbour_data = cells[neighbour_id]
+                    neighbours.append(neighbour_data)
+    return neighbours
 
 def eval_status(id):
-    #neighbours = find_neighbours(id)
+    neighbours = find_neighbours(id)
     num_dead = 0
     num_alive = 0
     cell_present_status = cells[id]["status"]
@@ -126,5 +94,5 @@ def eval_status(id):
 
 
 generate_cells_data()
-# find_neighbours(2)
+find_neighbours(4)
 # eval_status(2)
