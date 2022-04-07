@@ -53,6 +53,7 @@ def generate_cells_data():
             else:
                 cell_data['status'] = 'dead'
             cells.append(cell_data)
+    print(cells)
 
 
 # Evaluate status of cell by checking the neighbouring cells' status; conditions aren't enough. Edge case: neighbour is within range but isn't existent, i.e. id exists but neighbour doesn't
@@ -102,12 +103,13 @@ def eval_status(id):
         return "dead"
 
 def perform_iteration():
-    cells_copy = cells
+    cells_copy = []
     for cell in cells:
-        id = cells[cell]["id"]
+        id = cell["id"]
         cell_new_status = eval_status(id)
-        cells_copy[id]["status"] = cell_new_status
-    print(cells)
+        new_cell = cell
+        new_cell["status"] = cell_new_status
+        cells_copy.append(new_cell)
     print(cells_copy)
 
 
