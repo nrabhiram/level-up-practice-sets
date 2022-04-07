@@ -31,6 +31,7 @@
 
 # imports random module
 import random
+import time
 
 # Get number of rows required for the game from user
 rows = int(input("Enter the number of rows for the game: "))
@@ -117,10 +118,17 @@ def render_state():
         for m in range(0, columns):
             id = n * columns + m
             if (cells[id]["status"] == "alive"):
-                print("A", end=" ")
+                print("A ", end=" ")
             else:
-                print("D", end=" ")
+                print(". ", end=" ")
         print('')
+    print('\n')
+    
+
+def begin_game():
+    render_state()
+    time.sleep(5)
+    begin_game()
             
 
 
@@ -129,4 +137,4 @@ def render_state():
 
 generate_cells_data()
 cells = perform_iteration()
-render_game()
+begin_game()
