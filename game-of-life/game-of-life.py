@@ -32,7 +32,7 @@ rows = int(input("Enter the number of rows for the game: "))
 # Get number of columns required for the game from user
 columns = int(input("Enter the number of columns for the game: "))
 # Create a list of dictionaries that looks like this:
-# [{id: 0, status: 'dead'}, ...]
+# [{'row': 0, 'column': 0, 'status': 'dead'}, ...]
 cells = []
 
 # Figuring out function syntax
@@ -42,36 +42,49 @@ def generate_cells_data():
         # This is giving me an error, need to figure out syntax
         cells.append({"id": n, "status": "alive"})
 
-# Evaluate status of cell by checking the neighbouring cells' status
+# Evaluate status of cell by checking the neighbouring cells' status; conditions aren't enough. Edge case: neighbour is within range but isn't existent, i.e. id exists but neighbour doesn't
 def find_neighbours(id):
     # Firstly, create a list of all the neighbours
     neighbours = []
+    # We need to check if the neghbouring cells at the location actually exists in the grid
+    # Every neighbour is (±1 columns, ±1 rows) away from the cell.
+    # So, range is from -1 to +1 rows/columns away from the cell
+    # We can check if the row and column exist in the first place
+    # If they do, we add it to the list of neighbours
+
     # Top neighbour
-    if ((id - columns) >= 0 and (id - columns) <= (rows * columns - 1)):
-        neighbours.append(id - columns)
-        print("top")
-    # Bottom neighbour
-    if ((id + columns) >= 0 and (id + columns) <= (rows * columns - 1)):
-        neighbours.append(id + columns)
-    # Left neighbour
-    if ((id - 1) >= 0 and (id - 1) <= (rows * columns - 1)):
-        neighbours.append(id - 1)
-    # Right neighbour
-    if ((id + 1) >= 0 and (id + 1) <= (rows * columns - 1)):
-        neighbours.append(id + 1)
-    # Top-right neighbour
-    if ((id - (columns - 1)) >= 0 and (id - (columns - 1)) <= (rows * columns - 1)):
-        neighbours.append(id - (columns - 1))
-    # Top-left neighbour
-    if ((id - (columns + 1)) >= 0 and (id - (columns + 1)) <= (rows * columns - 1)):
-        neighbours.append(id - (columns + 1))
-    # Bottom-right neighbour
-    if ((id + (columns + 1)) >= 0 and (id + (columns + 1)) <= (rows * columns - 1)):
-        neighbours.append(id + (columns + 1))
-    # Bottom-left neighbour
-    if ((id + (columns - 1)) >= 0 and (id + (columns - 1)) <= (rows * columns - 1)):
-        neighbours.append(id + (columns - 1))
-    return neighbours
+    # if ((id - columns) >= 0 and (id - columns) <= (rows * columns - 1)):
+    #     neighbours.append(id - columns)
+    #     print("top")
+    # # Bottom neighbour
+    # if ((id + columns) >= 0 and (id + columns) <= (rows * columns - 1)):
+    #     neighbours.append(id + columns)
+    #     print("bottom")
+    # # Left neighbour
+    # if ((id - 1) >= 0 and (id - 1) <= (rows * columns - 1)):
+    #     neighbours.append(id - 1)
+    #     print("left")
+    # # Right neighbour
+    # if ((id + 1) >= 0 and (id + 1) <= (rows * columns - 1)):
+    #     neighbours.append(id + 1)
+    #     print("right")
+    # # Top-right neighbour
+    # if ((id - (columns - 1)) >= 0 and (id - (columns - 1)) <= (rows * columns - 1)):
+    #     neighbours.append(id - (columns - 1))
+    #     print("tr")
+    # # Top-left neighbour
+    # if ((id - (columns + 1)) >= 0 and (id - (columns + 1)) <= (rows * columns - 1)):
+    #     neighbours.append(id - (columns + 1))
+    #     print("tl")
+    # # Bottom-right neighbour
+    # if ((id + (columns + 1)) >= 0 and (id + (columns + 1)) <= (rows * columns - 1)):
+    #     neighbours.append(id + (columns + 1))
+    #     print("br")
+    # # Bottom-left neighbour
+    # if ((id + (columns - 1)) >= 0 and (id + (columns - 1)) <= (rows * columns - 1)):
+    #     neighbours.append(id + (columns - 1))
+    #     print("bl")
+    # return neighbours
 
 def eval_status(id):
     neighbours = find_neighbours(id)
