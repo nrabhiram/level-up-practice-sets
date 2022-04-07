@@ -32,15 +32,21 @@ rows = int(input("Enter the number of rows for the game: "))
 # Get number of columns required for the game from user
 columns = int(input("Enter the number of columns for the game: "))
 # Create a list of dictionaries that looks like this:
-# [{'row': 0, 'column': 0, 'status': 'dead'}, ...]
+# [{'id': 0, 'row': 0, 'column': 0, 'status': 'dead'}, ...]
 cells = []
 
 # Figuring out function syntax
 def generate_cells_data():
+    cell_data = {'id': 0, 'row': 0, 'column': 0, 'status': 'alive'}
     # for every id number b/w 0 to l * h - 1, add a new dictionary to the list
-    for n in range(0, rows * columns):
-        # This is giving me an error, need to figure out syntax
-        cells.append({"id": n, "status": "alive"})
+    for n in range(0, rows):
+        for m in range(0, columns):
+            cell_data['row'] = n
+            cell_data['column'] = m
+            cell_data['id'] = n * columns + m
+            # Figure out a way to initialize config, most likely random function
+            cell_data['status'] = 'alive'
+
 
 # Evaluate status of cell by checking the neighbouring cells' status; conditions aren't enough. Edge case: neighbour is within range but isn't existent, i.e. id exists but neighbour doesn't
 def find_neighbours(id):
