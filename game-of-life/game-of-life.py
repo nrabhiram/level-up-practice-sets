@@ -27,6 +27,9 @@
 #           ? Or do we use use a random function to determine the initial state of each cell? 
 #           ? Does this even matter in the first place?
 
+# imports random module
+import random
+
 # Get number of rows required for the game from user
 rows = int(input("Enter the number of rows for the game: "))
 # Get number of columns required for the game from user
@@ -42,7 +45,10 @@ def generate_cells_data():
         for m in range(0, columns):
             cell_data = {'id': (n * columns + m), 'row': n, 'column': m, 'status': 'alive'}
             # Figure out a way to initialize config, most likely random function
-            cell_data['status'] = 'alive'
+            chance = random.randint(1, 4)
+            print(chance)
+            if (chance == 1):
+                cell_data['status'] = 'alive'
             cells.append(cell_data)
 
 
